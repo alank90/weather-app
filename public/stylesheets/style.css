@@ -1,8 +1,64 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+/*
+  Styles from this codepen:
+  https://codepen.io/official_naveen/pen/rgknI
+*/
 
-a {
-  color: #00B7FF;
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto;
+  width: 800px;
+}
+.container {
+  margin: 0 auto;
+  width: 600px;
+}
+fieldset {
+  -webkit-margin-end: 0px;
+  -webkit-margin-start: 0px;
+  -webkit-padding-after: 0em;
+  -webkit-padding-before: 0em;
+  -webkit-padding-end: 0em;
+  -webkit-padding-start: 0em;
+  border: 0px;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  border-image-slice: initial;
+  border-image-source: initial;
+  border-image-width: initial;
+  display: block;
+  min-width: -webkit-min-content;
+  padding: 30px;
+}
+.ghost-input, p {
+  background: #fff;
+  border:0px;
+  box-sizing: border-box;
+  color: #4b545f;
+  display: block;
+  font-family: Open Sans,Verdana;
+  font-size: 25px;
+  font-weight:300;
+  margin: 30px 0px;
+  outline: none;
+  padding: 10px 15px;
+  transition: all 0.1s ease-in-out;
+  width: 100%;
+  width: 100%;
+}
+.ghost-input:focus {
+  border-bottom:1px solid #ddd;
+}
+.ghost-button {
+  background-color: transparent;
+  border:2px solid #ddd;
+  min-width: 350px;
+  padding:10px 30px;
+  transition: all 0.1s ease-in-out;
+  width: 100%;
+}
+.ghost-button:hover {
+  border:2px solid #515151;
+}
+p {
+  color: #E64A19;
 }
