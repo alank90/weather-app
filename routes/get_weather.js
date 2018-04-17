@@ -2,8 +2,8 @@
 var express = require("express");
 var router = express.Router();
 
-const request = require('request');
-const apiKey = 'ffb27a3af8cae8c9cbf286a767e2df37';
+const request = require("request");
+const apiKey = "ffb27a3af8cae8c9cbf286a767e2df37";
 
 /* GET weather for a city. */
 router.post("/", function(req, res) {
@@ -12,25 +12,25 @@ router.post("/", function(req, res) {
 
   request(url, function(err, response, body) {
     if (err) {
-      res.render("index", { weather: null, error: "Error, Please try again." });
+      res.render("index", { weather: null, error: "Error, please try again" });
     } else {
       let weather = JSON.parse(body);
 
-      for (const name in weather.main) {
-        if (weather.main.hasOwnProperty(name)) {
+      for (const name in weather.weather[0]) {
+        if (weather.weather[0].hasOwnProperty(name)) {
           console.log(name);
         }
       }
-
+     
       if (weather.main == undefined) {
         res.render("index", {
           weather: null,
-          error: "Error, Please try again."
+          error: "Error, please try again"
         });
       } else {
         let weatherText = `It's ${weather.main.temp} degrees in ${
           weather.name
-        }!`;
+        }and the current conditions are ${weather.weather[0].description} ${weather.weather[0].id}!`;
         res.render("index", { weather: weatherText, error: null });
       }
     }
