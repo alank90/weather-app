@@ -15,13 +15,8 @@ router.post("/", function(req, res) {
       res.render("index", { weather: null, error: "Error, please try again" });
     } else {
       let weather = JSON.parse(body);
+      let weatherIcon = weather.weather[0].icon;
 
-      for (const name in weather.weather[0]) {
-        if (weather.weather[0].hasOwnProperty(name)) {
-          console.log(name);
-        }
-      }
-     
       if (weather.main == undefined) {
         res.render("index", {
           weather: null,
@@ -30,11 +25,11 @@ router.post("/", function(req, res) {
       } else {
         let weatherText = `It's ${weather.main.temp} degrees in ${
           weather.name
-        }and the current conditions are ${weather.weather[0].description} ${weather.weather[0].id}!`;
-        res.render("index", { weather: weatherText, error: null });
+        } and the current conditions are ${weather.weather[0].description} !`;
+         res.render("get_weather", { weather: weatherText, weather_icon: weatherIcon, error: null });
       }
     }
   });
 });
-
+ 
 module.exports = router;

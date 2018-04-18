@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('header.ejs') %>
+</head>
+
+<body>
+    <%- include('body.ejs') %>
+
+        <!-- EJS Here -->
+        <% if(weather !== null) { %>
+            <img class="center" src="http://openweathermap.org/img/w/<%= weather_icon %>.png" alt="Weather Icon">
+            <p class="weather_conditions">
+                <%= weather %>
+            </p>
+
+            <% } %>
+
+                <% if(error !== null) { %>
+                    <p>
+                        <%= error %>
+                    </p>
+                    <% } %>
+        <!-- End EJS -->
+
+</body>
+
+</html>
