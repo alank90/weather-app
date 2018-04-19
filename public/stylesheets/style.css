@@ -1,10 +1,5 @@
-/*
-  Styles from this codepen:
-  https://codepen.io/official_naveen/pen/rgknI
-*/
 
-/* Browser Reset  */
-
+/* =========== Browser Reset ========== */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -49,8 +44,11 @@ table {
 	border-spacing: 0;
 }
 
-/* End Reset */
+/* ========= End Reset ====================== */
 
+html {
+  font-size: 62.5%;
+}
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -58,9 +56,11 @@ body {
   width: 800px;
 }
 .container {
-  margin: 0 auto;
-  width: 600px;
+  display: flex;
+  flex-flow: column nowrap;
 }
+
+
 fieldset {
   -webkit-margin-end: 0px;
   -webkit-margin-start: 0px;
@@ -111,19 +111,29 @@ p {
 }
 p {
   color: #e64a19;
+  margin: 0 auto;
+  max-width: 40vw;
+  text-align: left;
 }
-  .weather_conditions {
-    margin-top: -15px;
-  }
-
+  
 img {
   max-width: 100%;
   height: auto;
+  transform: scale(1.85);
+  transition: all 2s;
+}
+  img:hover {
+    transform: scale(3);
+  }
+
+.city {
+  font-size: 5.5rem;
+  text-align: center;
 }
 
 .center {
   display: block;
   margin: 0 auto;
-  width: 10%;
+  max-width: 50%;
 }
 
