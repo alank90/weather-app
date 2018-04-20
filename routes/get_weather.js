@@ -15,35 +15,23 @@ router.post("/", function(req, res) {
       res.render("index", { weather: null, error: "Error, please try again" });
     } else {
       let weather = JSON.parse(body);
-      let weatherIcon = weather.weather[0].icon;
-      let currentConditions = weather.weather[0].description;
-      let humidity = weather.main.humidity;
-      let pressure = weather.main.pressure;
-      let temp_min = weather.main.temp_min;
-      let temp_max = weather.main.temp_max;
-      let wind = weather.wind.speed;
-      let wind_direction = weather.wind.deg;
 
-      console.log(weather.name);
-
-      if (weather.main == undefined) {
+      if (weather.cod === "404") {
         res.render("index", {
-          weather: null,
-          error: "Error, please try again"
+          weather: weather.cod,
+          error: weather.message
         });
       } else {
-       /*  let weatherText = `It's ${weather.main.temp} degrees in ${
-          weather.name
-        } and the current conditions are ${weather.weather[0].description} !`; */
+         let wind_speed = Math.trunc(weather.wind.speed);
         res.render("get_weather", {
           weather: weather,
           city: weather.name,
-          weather_icon: weatherIcon,
+          weather_icon: weather.weather[0].icon,
           temp: weather.main.temp,
           currentConditions: weather.weather[0].description,
           humidity: weather.main.humidity,
           pressure: weather.main.pressure,
-          wind:  weather.wind.speed,
+          wind: wind_speed,
           wind_direction: weather.wind.deg,
           error: null
         });
@@ -53,3 +41,14 @@ router.post("/", function(req, res) {
 });
 
 module.exports = router;
+
+
+/* Module to convert degrees to compass directions 
+
+function degToCompass(num) {
+  var val = Math.floor((num / 22.5) + 0.5);
+  var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+  return arr[(val % 16)];
+}
+
+*/
