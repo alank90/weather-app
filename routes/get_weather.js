@@ -1,6 +1,7 @@
 // get_weather.js
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const degToCompass = require("../js/degToCompass");
 
 const request = require("request");
 const apiKey = "ffb27a3af8cae8c9cbf286a767e2df37";
@@ -22,7 +23,8 @@ router.post("/", function(req, res) {
           error: weather.message
         });
       } else {
-         let wind_speed = Math.trunc(weather.wind.speed);
+        let wind_speed = Math.trunc(weather.wind.speed);
+        let windDirection = degToCompass(weather.wind.deg);
         res.render("get_weather", {
           weather: weather,
           city: weather.name,
@@ -32,7 +34,7 @@ router.post("/", function(req, res) {
           humidity: weather.main.humidity,
           pressure: weather.main.pressure,
           wind: wind_speed,
-          wind_direction: weather.wind.deg,
+          wind_direction: windDirection,
           error: null
         });
       }
